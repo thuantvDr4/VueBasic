@@ -52,6 +52,7 @@
                 this.$emit('userChangeStatus', userId);
             },
             viewDetail:function (user) {
+                console.log('[user]----', user)
                 this.userInfo = user
             }
         },

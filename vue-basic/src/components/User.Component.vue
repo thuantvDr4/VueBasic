@@ -1,9 +1,9 @@
 <!-----User-Item---->
 <template>
-    <section class="user" v-on:click="$emit(viewDetail, user)">
+    <section class="user" v-on:click="viewDetail(user)">
         <h4>{{user.name}}</h4>
         <p>{{user.email}}</p>
-        <button v-on:click="$emit('toggleStatus', user.id)"
+        <button v-on:click.stop="$emit('toggleStatus', user.id)"
                 class="user__button"
                 v-bind:class="[{active: user.active  ,inActive: !user.active}]" >
             {{status}}
@@ -37,7 +37,7 @@
         },
         methods:{
             viewDetail: function (user) {
-                console.log('[User]----', user.name)
+                this.$emit('viewDetail', user)
             },
 
         }
@@ -63,6 +63,8 @@
         border-radius: 10px;
 
         background-color: white;
+
+        cursor: pointer;
     }
 
     .user:hover{
@@ -82,6 +84,8 @@
 
         background-color: #696969;
         color: #333333;
+
+        cursor: pointer;
 
     }
     .user__button:hover{

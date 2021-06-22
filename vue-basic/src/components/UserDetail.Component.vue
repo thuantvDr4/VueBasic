@@ -1,9 +1,9 @@
 <!-----User-Item---->
 <template>
     <section class="detail">
-        <h1>{{user&&user.name}}}</h1>
-        <p>{{user&&user.email}}}</p>
-        <p>{{user&&user.active}}}</p>
+        <h1>Name: {{user&&user.name}}</h1>
+        <p>Email: {{user&&user.email}}</p>
+        <p>Status: {{status}}</p>
     </section>
 </template>
 
@@ -18,8 +18,6 @@
                     return null
                 }
             },
-
-
         },
         data(){
             return{
@@ -27,11 +25,17 @@
             }
         },
         computed:{
-
+            status: function () {
+                if(!this.user){
+                    return '';
+                }else {
+                    return this.user.active? 'Active' : 'Inactive'
+                }
+            }
         },
         methods:{
-        }
 
+        },
     }
 
 </script>
